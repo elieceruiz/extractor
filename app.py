@@ -1,6 +1,5 @@
 import streamlit as st
 import re              # Para buscar patrones en texto (regex)
-import pyperclip       # Para copiar texto al portapapeles
 
 # Configuración básica de la app
 st.set_page_config(
@@ -52,15 +51,7 @@ result = "\n".join(output_lines)
 # Mostrar el resultado
 st.subheader("Resultado")
 st.text_area(
-    "Salida limpia:",
+    "Salida limpia (Ctrl + C para copiar):",
     value=result,
-    height=150
+    height=180
 )
-
-# Botón para copiar al portapapeles
-if st.button("📋 Copiar al portapapeles"):
-    if result.strip():
-        pyperclip.copy(result)
-        st.success("Copiado al portapapeles")
-    else:
-        st.warning("No hay nada para copiar")
